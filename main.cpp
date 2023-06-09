@@ -120,38 +120,13 @@ void processUserOption(int userOption) {
 
 int main() {
 
-	// double price = 5319.450228;
-	// double amount = 0.00020075;
-	// std::string timestamp{"2020/03/17 17:01:24.884492"};
-	// std::string product{"BTC/USDT"};
-	// enum class OrderBookType {bid, ask};
-	// OrderBookType orderType = OrderBookType::bid;
-
-	// std::vector<double> prices;
-	// std::vector<double> amounts;
-	// std::vector<std::string> timestamps;
-	// std::vector<std::string> products;
-	// std::vector<OrderBookType> orderTypes;
-
-	// prices.push_back(5319.450228);
-	// amounts.push_back(0.00020075);
-	// timestamps.push_back("2020/03/17 17:01:24.884492");
-	// products.push_back("BTC/USDT");
-	// orderTypes.push_back(OrderBookType::bid);
-
-	// std::cout << "Prices: " << prices[0] << std::endl;
-
-	// OrderBookEntry order1;
-	// order1.price = 5319.450228;
-	// order1.amount = 0.00020075;
-	// order1.timestamp = "2020/03/17 17:01:24.884492";
-	// order1.product = "BTC/USDT";
-	// order1.orderType = OrderBookType::bid;
-	// std::cout << "Price: " << order1.price << std::endl;
-
 	std::vector<OrderBookEntry> orders;
 	orders.push_back(OrderBookEntry{0.02187308, 7.44564869, "2020/03/17 17:01:24.884492", "ETH/BTC", OrderBookType::bid});
 	orders.push_back(OrderBookEntry{0.02187307, 3.467434, "2020/03/17 17:02:24.884492", "ETH/BTC", OrderBookType::bid});
+
+	for (OrderBookEntry& order : orders) {
+		std::cout << "Price: " << order.price << std::endl;
+	}
 
 	double averagePrice = computeAveragePrice(orders);
 	std::cout << "Average price: " << averagePrice << std::endl;
@@ -164,18 +139,6 @@ int main() {
 
 	double priceSpread = computePriceSpread(orders);
 	std::cout << "Price spread: " << priceSpread << std::endl;
-
-	// for (OrderBookEntry& order : orders) {
-	// 	std::cout << "Price: " << order.price << std::endl;
-	// }
-
-	// for (unsigned int i = 0; i < orders.size(); ++i) {
-	// 	std::cout << "Price: " << orders[i].price << std::endl;
-	// }
-
-	// for (unsigned int i = 0; i < orders.size(); ++i) {
-	// 	std::cout << "Price: " << orders.at(i).price << std::endl;
-	// }
 
 	bool exit = false;
 	while (!exit) {
